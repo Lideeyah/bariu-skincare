@@ -63,7 +63,7 @@ function OptionRow({
       className={`flex w-full items-center gap-3 rounded-xl border px-4 py-3.5 text-left transition ${
         checked
           ? "border-stone-900 bg-stone-900 text-white"
-          : "border-stone-200 bg-white text-stone-800 hover:border-stone-400"
+          : "border-stone-200 bg-[#faf8f4] text-stone-800 hover:border-stone-400"
       }`}
     >
       <span
