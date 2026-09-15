@@ -12,12 +12,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/*
+ * This app only has a light theme designed (text colors like text-stone-900
+ * assume a white background), so the background/foreground stay fixed
+ * instead of following the OS dark-mode preference — otherwise dark text
+ * ends up on a dark background and is unreadable.
+ */
 
 body {
   background: var(--background);
