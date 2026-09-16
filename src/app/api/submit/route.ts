@@ -72,9 +72,10 @@ export async function POST(request: NextRequest) {
     .insert({ name: cleanName, answers: cleanAnswers });
 
   if (error) {
-    return NextResponse.json({ error: "Could not save your answers. Please try again." }, {
-      status: 500,
-    });
+    return NextResponse.json(
+      { error: `Could not save your answers: ${error.message}` },
+      { status: 500 },
+    );
   }
 
   return NextResponse.json({ ok: true });

@@ -150,10 +150,13 @@ export default function QuizWizard() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, answers }),
       });
-      if (!res.ok) throw new Error("submit failed");
+      if (!res.ok) {
+        const body = await res.json().catch(() => null);
+        throw new Error(body?.error || `Submit failed (${res.status})`);
+      }
       router.push("/test/submitted");
-    } catch {
-      setSubmitError("Something went wrong sending your answers. Please try again.");
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setSubmitting(false);
     }
   }
